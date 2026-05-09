@@ -1,1 +1,27 @@
-
+name: CI Angular App
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  test:
+    name: run tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Incio de trabajo
+        run: |
+          echo "Iniciando trabajo de CI Angular App"
+          echo "Configurando el entorno de ejecución"
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Install dependencies
+        run: npm install
+      - name: Run tests
+        run: npm test
+      - name: Finalización de trabajo
+        run: echo "Trabajo de CI Angular App finalizado"
